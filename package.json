@@ -1,0 +1,19 @@
+{
+  "name": "champagne",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joao Pedro",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "fire-extinguisher": "git+ssh://git@github.com:cangjie-champagne/fire-extinguisher#master",
+    "gas-station": "git+ssh://git@github.com:cangjie-champagne/gas-station#master",
+    "sunflower": "git+ssh://git@github.com:cangjie-champagne/sunflower#master",
+    "pepper-spray": "git+ssh://git@github.com:cangjie-champagne/pepper-spay#master",
+    "trash-can": "git+ssh://git@github.com:cangjie-champagne/trash-can"
+  }
+}

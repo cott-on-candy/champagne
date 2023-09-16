@@ -1,5 +1,6 @@
 const { Command } = require('commander');
 const { name, version } = require('./package.json');
+const parser_keys = require('./src/parser_keys.json');
 
 const { Bullseye } = require('bullseye');
 const { Camping } = require('camping');
@@ -22,6 +23,29 @@ const { TrashCan } = require('trash-can');
 const { Umbrella } = require('umbrella');
 const { Watch } = require('watch');
 
+const parser = {
+  camping: (s) => { return new Camping(s).result },
+  placard: (s) => { return new Placard(s).result },
+  compass: (s) => { return new Compass(s).result },
+  gas_station: (s) => { return new GasStation(s).result },
+  pepper_spray: (s) => { return new PepperSpray(s).result },
+  fire_extinguisher: (s) => { return new FireExtinguisher(s).result },
+  umbrella: (s) => { return new Umbrella(s).result },
+  eagle: (s) => { return new Eagle(s).result },
+  snowflake: (s) => { return new Snowflake(s).result },
+  sunflower: (s) => { return new Sunflower(s).result },
+  watch: (s) => { return new Watch(s).result },
+  tent: (s) => { return new Tent(s).result },
+  taxi_cab: (s) => { return new TaxiCab(s).result },
+  tennis: (s) => { return new Tennis(s).result },
+  bullseye: (s) => { return new Bullseye(s).result },
+  joystick: (s) => { return new Joystick(s).result },
+  telephone: (s) => { return new Telephone(s).result },
+  trash_can: (s) => { return new TrashCan(s).result },
+  magnet: (s) => { return new Magnet(s).result },
+  flashlight: (s) => { return new Flashlight(s).result }
+};
+
 const program = new Command();
 
 program
@@ -34,52 +58,145 @@ program.command('parse')
   .argument('<string>', 'string to parse')
   .option('-d, --debug', 'debug')
   .action((s, { debug }) => {
-    let camping = new Camping(s).result.map((r) => r.wide);
-    let placard = new Placard(s).result.map((r) => r.wide);
-    let compass = new Compass(s).result.map((r) => r.wide);
-    let gas_station = new GasStation(s).result.map((r) => r.wide);
-    let pepper_spray = new PepperSpray(s).result.map((r) => r.wide);
-    let fire_extinguisher = new FireExtinguisher(s).result.map((r) => r.wide);
-    let umbrella = new Umbrella(s).result.map((r) => r.wide);
-    let eagle = new Eagle(s).result.map((r) => r.wide);
-    let snowflake = new Snowflake(s).result.map((r) => r.wide);
-    let sunflower = new Sunflower(s).result.map((r) => r.wide);
-    let watch = new Watch(s).result.map((r) => r.wide);
-    let tent = new Tent(s).result.map((r) => r.wide);
-    let taxi_cab = new TaxiCab(s).result.map((r) => r.wide);
-    let tennis = new Tennis(s).result.map((r) => r.wide);
-    let bullseye = new Bullseye(s).result.map((r) => r.wide);
-    let joystick = new Joystick(s).result.map((r) => r.wide);
-    let telephone = new Telephone(s).result.map((r) => r.wide);
-    let trash_can = new TrashCan(s).result.map((r) => r.wide);
-    let magnet = new Magnet(s).result.map((r) => r.wide);
-    let flashlight = new Flashlight(s).result.map((r) => r.wide);
-
     console.log(`PHRASE: ${s}`);
-    console.log('-----------------------------------------------')
-    console.log(`camping (hand -> Shǒu): ${camping}`);
-    console.log(`placard (field -> Tián): ${placard}`);
-    console.log(`compass (water -> Shuǐ): ${compass}`);
-    console.log(`gas-station (predict -> Bo): ${gas_station}`);
-    console.log(`pepper-spray (mountain -> Shān): ${pepper_spray}`);
-    console.log(`fire-extinguisher (dagger-axe -> Gē): ${fire_extinguisher}`);
-    console.log(`umbrella (people -> Rén): ${umbrella}`);
-    console.log(`eagle (heart -> Xīn): ${eagle}`);
-    console.log(`snowflake (day -> Rì): ${snowflake}`);
-    console.log(`sunflower (corpse -> Shī): ${sunflower}`);
-    console.log(`watch (wood -> Mù): ${watch}`);
-    console.log(`tent (fire -> Huǒ): ${tent}`);
-    console.log(`taxi-cab (earth -> Tǔ): ${taxi_cab}`);
-    console.log(`tennis (ten -> Shí): ${tennis}`);
-    console.log(`bullseye (big -> Dà): ${bullseye}`);
-    console.log(`joystick (middle -> Zhōng): ${joystick}`);
-    console.log(`telephone (disaster -> Nán): ${telephone}`);
-    console.log(`trash-can (gold -> Jīn): ${trash_can}`);
-    console.log(`magnet (bow -> Gōng): ${magnet}`);
-    console.log(`flashlight (one -> Yī): ${flashlight}`);
-    console.log('-----------------------------------------------')
+    console.log('-----------------------------------------------');
+    console.log(`camping (hand -> Shǒu): ${parser.camping(s).map((r) => r.wide)}`);
+    console.log(`placard (field -> Tián): ${parser.placard(s).map((r) => r.wide)}`);
+    console.log(`compass (water -> Shuǐ): ${parser.compass(s).map((r) => r.wide)}`);
+    console.log(`gas station (predict -> Bo): ${parser.gas_station(s).map((r) => r.wide)}`);
+    console.log(`pepper spray (mountain -> Shān): ${parser.pepper_spray(s).map((r) => r.wide)}`);
+    console.log(`fire extinguisher (dagger-axe -> Gē): ${parser.fire_extinguisher(s).map((r) => r.wide)}`);
+    console.log(`umbrella (people -> Rén): ${parser.umbrella(s).map((r) => r.wide)}`);
+    console.log(`eagle (heart -> Xīn): ${parser.eagle(s).map((r) => r.wide)}`);
+    console.log(`snowflake (day -> Rì): ${parser.snowflake(s).map((r) => r.wide)}`);
+    console.log(`sunflower (corpse -> Shī): ${parser.sunflower(s).map((r) => r.wide)}`);
+    console.log(`watch (wood -> Mù): ${parser.watch(s).map((r) => r.wide)}`);
+    console.log(`tent (fire -> Huǒ): ${parser.tent(s).map((r) => r.wide)}`);
+    console.log(`taxi cab (earth -> Tǔ): ${parser.taxi_cab(s).map((r) => r.wide)}`);
+    console.log(`tennis (ten -> Shí): ${parser.tennis(s).map((r) => r.wide)}`);
+    console.log(`bullseye (big -> Dà): ${parser.bullseye(s).map((r) => r.wide)}`);
+    console.log(`joystick (middle -> Zhōng): ${parser.joystick(s).map((r) => r.wide)}`);
+    console.log(`telephone (disaster -> Nán): ${parser.telephone(s).map((r) => r.wide)}`);
+    console.log(`trash can (gold -> Jīn): ${parser.trash_can(s).map((r) => r.wide)}`);
+    console.log(`magnet (bow -> Gōng): ${parser.magnet(s).map((r) => r.wide)}`);
+    console.log(`flashlight (one -> Yī): ${parser.flashlight(s).map((r) => r.wide)}`);
+    console.log('-----------------------------------------------');
     
   });
+
+  program.command('basson')
+    .description('the sound of basson in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.gas_station(s).map((r) => {
+        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          web
+        });
+      });
+
+      console.log(result);
+    });
+
+  program.command('cello')
+    .description('the sound of cello in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.tent(s).map((r) => {
+        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          web
+        });
+      });
+
+      console.log(result);
+    });
+
+  program.command('clarinet')
+    .description('the sound of clarinet in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.tennis(s).map((r) => {
+        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          web
+        });
+      });
+
+      console.log(result);
+    });
+
+  program.command('flute')
+    .description('the sound of flute in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.watch(s).map((r) => {
+        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          web
+        });
+      });
+
+      console.log(result);
+    });
+
+  program.command('piano')
+    .description('the sound of piano in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.pepper_spray(s).map((r) => {
+        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          web
+        });
+      });
+
+      console.log(result);
+    });
+
+  program.command('violin')
+    .description('the sound of violin in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.taxi_cab(s).map((r) => {
+        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          web
+        });
+      });
+
+      console.log(result);
+    });
 
 
 program.parse();

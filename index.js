@@ -84,6 +84,25 @@ program.command('parse')
     
   });
 
+  program.command('acguitar')
+    .description('the sound of the acustic guitar in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.eagle(s).map((r) => {
+        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          web
+        });
+      });
+
+      console.log(result);
+    });
+  
   program.command('basson')
     .description('the sound of basson in your ears')
     .argument('<string>', 'string to get the sound of')
@@ -160,6 +179,44 @@ program.command('parse')
       console.log(result);
     });
 
+  program.command('hat')
+    .description('the sound of a hat in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.tennis(s).map((r) => {
+        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          web
+        });
+      });
+
+      console.log(result);
+    });
+
+  program.command('kick')
+    .description('the sound of kick in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.sunflower(s).map((r) => {
+        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          web
+        });
+      });
+
+      console.log(result);
+    });
+
   program.command('piano')
     .description('the sound of piano in your ears')
     .argument('<string>', 'string to get the sound of')
@@ -167,6 +224,25 @@ program.command('parse')
       let result = [];
       
       parser.pepper_spray(s).map((r) => {
+        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          web
+        });
+      });
+
+      console.log(result);
+    });
+
+  program.command('snare')
+    .description('the sound of snare in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.fire_extinguisher(s).map((r) => {
         let web = parser[parser_keys[r.wide]](r.word)[0].wide;
 
         result.push({

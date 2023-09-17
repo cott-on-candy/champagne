@@ -91,12 +91,31 @@ program.command('parse')
       let result = [];
       
       parser.eagle(s).map((r) => {
-        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
 
         result.push({
           word: r.word,
           wide: r.wide,
-          web
+          foreign
+        });
+      });
+
+      console.log(result);
+    });
+  
+  program.command('bass')
+    .description('the sound of bass in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.snowflake(s).map((r) => {
+        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
+
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          foreign
         });
       });
 
@@ -108,14 +127,31 @@ program.command('parse')
     .argument('<string>', 'string to get the sound of')
     .action((s) => {
       let result = [];
-      
+    
       parser.gas_station(s).map((r) => {
-        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+        result.push({
+          word: r.word,
+          wide: r.wide,
+          foreign: parser[parser_keys[r.wide]](r.word)[0].wide
+        });
+      });
+
+      console.log(result);
+    });
+
+  program.command('tambourine')
+    .description('the sound of tambourine in your ears')
+    .argument('<string>', 'string to get the sound of')
+    .action((s) => {
+      let result = [];
+      
+      parser.camping(s).map((r) => {
+        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
 
         result.push({
           word: r.word,
           wide: r.wide,
-          web
+          foreign
         });
       });
 
@@ -129,12 +165,12 @@ program.command('parse')
       let result = [];
       
       parser.tent(s).map((r) => {
-        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
 
         result.push({
           word: r.word,
           wide: r.wide,
-          web
+          foreign
         });
       });
 
@@ -148,12 +184,12 @@ program.command('parse')
       let result = [];
       
       parser.tennis(s).map((r) => {
-        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
 
         result.push({
           word: r.word,
           wide: r.wide,
-          web
+          foreign
         });
       });
 
@@ -167,12 +203,12 @@ program.command('parse')
       let result = [];
       
       parser.watch(s).map((r) => {
-        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
 
         result.push({
           word: r.word,
           wide: r.wide,
-          web
+          foreign
         });
       });
 
@@ -186,12 +222,12 @@ program.command('parse')
       let result = [];
       
       parser.tennis(s).map((r) => {
-        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
 
         result.push({
           word: r.word,
           wide: r.wide,
-          web
+          foreign
         });
       });
 
@@ -205,12 +241,12 @@ program.command('parse')
       let result = [];
       
       parser.sunflower(s).map((r) => {
-        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
 
         result.push({
           word: r.word,
           wide: r.wide,
-          web
+          foreign
         });
       });
 
@@ -224,12 +260,12 @@ program.command('parse')
       let result = [];
       
       parser.pepper_spray(s).map((r) => {
-        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
 
         result.push({
           word: r.word,
           wide: r.wide,
-          web
+          foreign
         });
       });
 
@@ -243,12 +279,12 @@ program.command('parse')
       let result = [];
       
       parser.fire_extinguisher(s).map((r) => {
-        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
 
         result.push({
           word: r.word,
           wide: r.wide,
-          web
+          foreign
         });
       });
 
@@ -262,12 +298,12 @@ program.command('parse')
       let result = [];
       
       parser.taxi_cab(s).map((r) => {
-        let web = parser[parser_keys[r.wide]](r.word)[0].wide;
+        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
 
         result.push({
           word: r.word,
           wide: r.wide,
-          web
+          foreign
         });
       });
 

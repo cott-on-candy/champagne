@@ -255,6 +255,12 @@ program.command('parse')
       let right_ch_ch2 = null;
       let right_ch_ch2_ch3 = null;
 
+      // helpers
+      let hydrogen = null;
+
+      ////////////////////
+      // middle carbons //
+      ////////////////////
       middle_carbon_left = { _carbon: 1, carbon: parser.tent(s)[0].wide }; 
       middle_carbon_right = { _carbon: 1, carbon: parser.tent(s)[0].wide };
 
@@ -266,10 +272,10 @@ program.command('parse')
       };
 
       middle_carbon_ch_left = { 
-        _hydrogen: 1,
         _carbon: 1,
-        hydrogen: parser.sunglasses(s)[0].wide,
-        carbon: parser[parser_keys[middle_carbon_hc_left.carbon]](s)[0].wide
+        _hydrogen: 1,
+        carbon: parser[parser_keys[middle_carbon_hc_left.carbon]](s)[0].wide,
+        hydrogen: parser.sunglasses(s)[0].wide
       };
 
       middle_carbon_hc_right = { 
@@ -280,10 +286,111 @@ program.command('parse')
       };
 
       middle_carbon_ch_right = { 
-        _hydrogen: 1,
         _carbon: 1,
+        _hydrogen: 1,
+        carbon: parser[parser_keys[middle_carbon_hc_right.carbon]](s)[0].wide,
+        hydrogen: parser.sunglasses(s)[0].wide
+      };
+
+      /////////////////////
+      // benzeno carbons //
+      /////////////////////
+      middle_benzeno_carbon_left = { _carbon: 1, carbon: parser[parser_keys[middle_carbon_ch_left.carbon]](s)[0].wide };
+      middle_benzeno_carbon = { _carbon: 1, carbon: parser[parser_keys[middle_carbon_hc_left.carbon]](s)[0].wide };
+      middle_benzeno_carbon_right = { _carbon: 1, carbon: parser[parser_keys[middle_carbon_ch_right.carbon]](s)[0].wide };
+
+      ////////////////////
+      // left structure //
+      ////////////////////
+      left_hn = {
+        _hydrogen: 1,
+        _nitrogen: 1,
         hydrogen: parser.sunglasses(s)[0].wide,
-        carbon: parser[parser_keys[middle_carbon_hc_right.carbon]](s)[0].wide
+        nitrogen: parser.placard(s)[0].wide
+      };
+
+      left_ch = {
+        _carbon: 1,
+        _hydrogen: 1,
+        carbon: parser[parser_keys[middle_carbon_ch_left.carbon]](s)[0].wide,
+        hydrogen: parser[parser_keys[left_hn.hydrogen]](s)[0].wide
+      }
+
+      hydrogen = [parser.sunglasses(s)[0].wide];
+
+      for (let i = 1; i <= 2; i++) {
+        hydrogen.push(parser[parser_keys[hydrogen[hydrogen.length - 1]]](s)[0].wide);
+      }
+
+      left_ch_ch3 = {
+        _carbon: 1,
+        _hydrogen: 3,
+        carbon: parser[parser_keys[left_ch.carbon]](s)[0].wide,
+        hydrogen
+      };
+
+      hydrogen = [parser.sunglasses(s)[0].wide];
+      hydrogen.push(parser[parser_keys[hydrogen[hydrogen.length - 1]]](s)[0].wide);
+
+      left_ch_ch2 = {
+        _carbon: 1,
+        _hydrogen: 2,
+        carbon: parser[parser_keys[left_ch.carbon]](s)[0].wide,
+        hydrogen
+      };
+
+      left_ch_ch2_ch3 = {
+        _carbon: 1,
+        _hydrogen: 3,
+        carbon: parser[parser_keys[left_ch.carbon]](s)[0].wide,
+        hydrogen
+      };
+      
+      /////////////////////
+      // right structure //
+      /////////////////////
+      right_hn = {
+        _hydrogen: 1,
+        _nitrogen: 1,
+        hydrogen: parser.sunglasses(s)[0].wide,
+        nitrogen: parser.placard(s)[0].wide
+      };
+
+      right_ch = {
+        _carbon: 1,
+        _hydrogen: 1,
+        carbon: parser[parser_keys[middle_carbon_ch_right.carbon]](s)[0].wide,
+        hydrogen: parser[parser_keys[right_hn.hydrogen]](s)[0].wide
+      }
+
+      hydrogen = [parser.sunglasses(s)[0].wide];
+
+      for (let i = 1; i <= 2; i++) {
+        hydrogen.push(parser[parser_keys[hydrogen[hydrogen.length - 1]]](s)[0].wide);
+      }
+
+      right_ch_ch3 = {
+        _carbon: 1,
+        _hydrogen: 3,
+        carbon: parser[parser_keys[right_ch.carbon]](s)[0].wide,
+        hydrogen
+      };
+
+      hydrogen = [parser.sunglasses(s)[0].wide];
+      hydrogen.push(parser[parser_keys[hydrogen[hydrogen.length - 1]]](s)[0].wide);
+
+      right_ch_ch2 = {
+        _carbon: 1,
+        _hydrogen: 2,
+        carbon: parser[parser_keys[right_ch.carbon]](s)[0].wide,
+        hydrogen
+      };
+
+      right_ch_ch2_ch3 = {
+        _carbon: 1,
+        _hydrogen: 3,
+        carbon: parser[parser_keys[right_ch.carbon]](s)[0].wide,
+        hydrogen
       };
 
       console.log(left_ch_ch2_ch3);

@@ -68,6 +68,7 @@ program.command('parse')
   .argument('<string>', 'string to parse')
   .option('-d, --debug', 'debug')
   .action((s, { debug }) => {
+    console.log('-----------------------------------------------');
     console.log(`PHRASE: ${s}`);
     console.log('-----------------------------------------------');
     console.log(`camping (hand -> Shǒu): ${parser.camping(s).map((r) => r.wide)}`);
@@ -149,6 +150,31 @@ program.command('parse')
           wide: r.wide,
           foreign: parser[parser_keys[r.wide]](r.word)[0].wide
         });
+      });
+
+      console.log(result);
+    });
+
+  program.command('broadway')
+    .description('the broadway avenue')
+    .argument('<number>', 'number of the intersection street')
+    .argument('<string>', 'string to get into')
+    .action((n, s) => {
+      let result = [];
+    
+      parser.pepper_spray(s).map((r) => {
+        let last = r.wide;
+
+        for (let i = 0; i <= 14; i++) {
+          last = parser[parser_keys[last]](r.word)[0].wide;
+
+          if (i === 14) {
+            result.push({
+              word: r.word,
+              wide: last
+            });
+          }
+        }
       });
 
       console.log(result);
@@ -251,6 +277,42 @@ program.command('parse')
       console.log(result);
     });
 
+  program.command('ethanol')
+    .argument('<string>', 'string to get the ethanol from')
+    .action((s) => {
+      let result = [];
+      let carbon = parser.tent(s)[0].wide;
+
+      carbon = {
+        _carbon: 2,
+        carbon: [carbon, parser[parser_keys[carbon]](s)[0].wide]
+      }
+
+      let hydrogen = {
+        _hydrogen: 5,
+        hydrogen: [parser.sunglasses(s)[0].wide]
+      };
+
+      for (let i = 1; i <= 4; i++) {
+        hydrogen.hydrogen.push(parser[parser_keys[hydrogen.hydrogen[hydrogen.hydrogen.length - 1]]](s)[0].wide);
+      }
+
+      let oxygen = {
+        _oxygen: 1,
+        oxygen: parser.trash_can(s)[0].wide
+      };
+
+      let oxygen_hydrogen = {
+        _hydrogen: 1,
+        hydrogen: parser.sunglasses(s)[0].wide
+      };      
+
+      console.log(carbon);
+      console.log(hydrogen);
+      console.log(oxygen);
+      console.log(oxygen_hydrogen)
+    });
+
   program.command('flute')
     .description('the sound of flute in your ears')
     .argument('<string>', 'string to get the sound of')
@@ -268,6 +330,129 @@ program.command('parse')
       });
 
       console.log(result);
+    });
+
+  program.command('gasoline')
+    .argument('<string>', 'string to get the gasoline formula of')
+    .action((s) => {
+      let left_ch3 = [];
+      let left_carbon = null;
+      let middle_ch2 = {};
+      let right_carbon = null;
+      let right_ch3 = [];
+
+      let hydrogen = parser.sunglasses(s)[0].wide;
+
+      // middle CH2
+      middle_ch2 = {
+        _carbon: 1,
+        _hydrogen: 2,
+        carbon: parser.tent(s)[0].wide,
+        hydrogen: [hydrogen, parser[parser_keys[hydrogen]](s)[0].wide]
+      }
+      // end of middle CH2
+
+      // left Carbon
+      left_carbon = {
+        _carbon: 1,
+        carbon: parser[parser_keys[middle_ch2.carbon]](s)[0].wide
+      };
+      // end of left Carbon
+
+      // left CH3
+      hydrogen = parser[parser_keys[middle_ch2.hydrogen[0]]](s)[0].wide;
+      hydrogen_group = [];
+
+      for (let i = 1; i <= 3; i++) {
+        hydrogen = parser[parser_keys[hydrogen]](s)[0].wide;
+        hydrogen_group.push(hydrogen);
+      }
+
+      left_ch3.push({
+        _carbon: 1,
+        _hydrogen: 3,
+        carbon: parser[parser_keys[left_carbon.carbon]](s)[0].wide,
+        hydrogen: hydrogen_group 
+      });
+
+      hydrogen_group = [];
+
+      for (let i = 1; i <= 3; i++) {
+        hydrogen = parser[parser_keys[hydrogen]](s)[0].wide;
+        hydrogen_group.push(hydrogen);
+      }
+
+      left_ch3.push({
+        _carbon: 1,
+        _hydrogen: 3,
+        carbon: parser[parser_keys[left_ch3[0].carbon]](s)[0].wide,
+        hydrogen: hydrogen_group
+      });
+
+      hydrogen_group = [];
+
+      for (let i = 1; i <= 3; i++) {
+        hydrogen = parser[parser_keys[hydrogen]](s)[0].wide;
+        hydrogen_group.push(hydrogen);
+      }
+
+      left_ch3.push({
+        _carbon: 1,
+        _hydrogen: 3,
+        carbon: parser[parser_keys[left_ch3[1].carbon]](s)[0].wide,
+        hydrogen: hydrogen_group
+      });
+      // end left CH3
+
+      // right Carbon
+      right_carbon = {
+        _carbon: 1,
+        carbon: parser[parser_keys[middle_ch2.carbon]](s)[0].wide
+      };
+      // end of right Carbon
+
+      // right CH3
+      hydrogen = parser[parser_keys[middle_ch2.hydrogen[0]]](s)[0].wide;
+
+      right_ch3.push({
+        _hydrogen: 1,
+        hydrogen
+      });
+
+      hydrogen_group = [];
+
+      for (let i = 1; i <= 3; i++) {
+        hydrogen = parser[parser_keys[hydrogen]](s)[0].wide;
+        hydrogen_group.push(hydrogen);
+      }
+
+      right_ch3.push({
+        _carbon: 1,
+        _hydrogen: 3,
+        carbon: parser[parser_keys[left_carbon.carbon]](s)[0].wide,
+        hydrogen: hydrogen_group
+      });
+
+      hydrogen_group = [];
+
+      for (let i = 1; i <= 3; i++) {
+        hydrogen = parser[parser_keys[hydrogen]](s)[0].wide;
+        hydrogen_group.push(hydrogen);
+      }
+
+      right_ch3.push({
+        _carbon: 1,
+        _hydrogen: 3,
+        carbon: parser[parser_keys[right_ch3[1].carbon]](s)[0].wide,
+        hydrogen: hydrogen_group
+      });
+      // end left CH3
+
+      console.log(left_ch3);
+      console.log(left_carbon);
+      console.log(middle_ch2);
+      console.log(right_carbon);
+      console.log(right_ch3);
     });
 
   program.command('hat')
@@ -419,6 +604,30 @@ program.command('parse')
           wide: r.wide,
           foreign
         });
+      });
+
+      console.log(result);
+    });
+
+  program.command('union-square')
+    .description('the union-square park streets')
+    .argument('<string>', 'string to get into the union-square park')
+    .action((s) => {
+      let result = [];
+    
+      parser.pepper_spray(s).map((r) => {
+        let last = r.wide;
+
+        for (let i = 0; i <= 17; i++) {
+          last = parser[parser_keys[last]](r.word)[0].wide;
+
+          if (i >= 14) {
+            result.push({
+              word: r.word,
+              wide: last
+            });
+          }
+        }
       });
 
       console.log(result);

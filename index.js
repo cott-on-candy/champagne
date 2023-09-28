@@ -180,6 +180,20 @@ program.command('parse')
       console.log(result);
     });
 
+  program.command('carbon-dioxide')
+    .argument('<string>', 'string to get the carbon dioxide from')
+    .action((s) => {
+      let oxygen = parser.trash_can(s)[0].wide;
+      let result = {
+        _carbon: 1,
+        _oxygen: 2,
+        carbon: parser.tent(s)[0].wide,
+        oxygen: [oxygen, parser[parser_keys[oxygen]](s)[0].wide]
+      };
+
+      console.log(result);
+    });
+
   program.command('cello')
     .description('the sound of cello in your ears')
     .argument('<string>', 'string to get the sound of')
@@ -216,6 +230,81 @@ program.command('parse')
       });
 
       console.log(result);
+    });
+
+  program.command('disel')
+    .argument('<string>', 'string to get the disel from')
+    .action((s) => {
+      let left_ch_ch2_ch3 = null;
+      let left_ch_ch2 = null;
+      let left_ch_ch3 = null;
+      let left_ch = null;
+      let left_hn = null;
+      let middle_carbon_hc_left = null;
+      let middle_carbon_ch_left = null;
+      let middle_carbon_left = null;
+      let middle_benzeno_carbon_left = {};
+      let middle_benzeno_carbon = {};
+      let middle_benzeno_carbon_right = {};
+      let middle_carbon_right = null;
+      let middle_carbon_ch_right = null;
+      let middle_carbon_hc_right = null;
+      let right_hn = null;
+      let right_ch = null;
+      let right_ch_ch3 = null;
+      let right_ch_ch2 = null;
+      let right_ch_ch2_ch3 = null;
+
+      middle_carbon_left = { _carbon: 1, carbon: parser.tent(s)[0].wide }; 
+      middle_carbon_right = { _carbon: 1, carbon: parser.tent(s)[0].wide };
+
+      middle_carbon_hc_left = { 
+        _hydrogen: 1,
+        _carbon: 1,
+        hydrogen: parser.sunglasses(s)[0].wide,
+        carbon: parser[parser_keys[middle_carbon_left.carbon]](s)[0].wide
+      };
+
+      middle_carbon_ch_left = { 
+        _hydrogen: 1,
+        _carbon: 1,
+        hydrogen: parser.sunglasses(s)[0].wide,
+        carbon: parser[parser_keys[middle_carbon_hc_left.carbon]](s)[0].wide
+      };
+
+      middle_carbon_hc_right = { 
+        _hydrogen: 1,
+        _carbon: 1,
+        hydrogen: parser.sunglasses(s)[0].wide,
+        carbon: parser[parser_keys[middle_carbon_right.carbon]](s)[0].wide
+      };
+
+      middle_carbon_ch_right = { 
+        _hydrogen: 1,
+        _carbon: 1,
+        hydrogen: parser.sunglasses(s)[0].wide,
+        carbon: parser[parser_keys[middle_carbon_hc_right.carbon]](s)[0].wide
+      };
+
+      console.log(left_ch_ch2_ch3);
+      console.log(left_ch_ch2);
+      console.log(left_ch_ch3);
+      console.log(left_ch);
+      console.log(left_hn);
+      console.log(middle_carbon_hc_left);
+      console.log(middle_carbon_ch_left);
+      console.log(middle_carbon_left);
+      console.log(middle_benzeno_carbon_left);
+      console.log(middle_benzeno_carbon);
+      console.log(middle_benzeno_carbon_right);
+      console.log(middle_carbon_right);
+      console.log(middle_carbon_ch_right);
+      console.log(middle_carbon_hc_right);
+      console.log(right_hn);
+      console.log(right_ch);
+      console.log(right_ch_ch3);
+      console.log(right_ch_ch2);
+      console.log(right_ch_ch2_ch3);
     });
 
   program.command('dna')
@@ -493,6 +582,21 @@ program.command('parse')
       console.log(result);
     });
 
+  program.command('ozone')
+    .argument('<string>', 'string to get the ozone from')
+    .action((s) => {
+      let ozone = {
+        _oxygen: 3,
+        oxygen: [parser.bullseye(s)[0].wide]
+      };
+
+      for (let j = 1; j <= 2; j++) {
+        ozone.oxygen.push(parser[parser_keys[ozone.oxygen[ozone.oxygen.length - 1]]](s)[0].wide);
+      }
+
+      console.log(ozone);
+    });
+
   program.command('piano')
     .description('the sound of piano in your ears')
     .argument('<string>', 'string to get the sound of')
@@ -510,6 +614,27 @@ program.command('parse')
       });
 
       console.log(result);
+    });
+
+  program.command('red-phosporus')
+    .argument('<string>', 'string to get the red phosporus of')
+    .action((s) => {
+      let phosporus = [];
+      
+      for (let i = 1; i <= 3; i++) {
+        let a = {
+          _phosporus: 4,
+          phosporus: [parser.bullseye(s)[0].wide]
+        };
+
+        for (let j = 1; j <= 3; j++) {
+          a.phosporus.push(parser[parser_keys[a.phosporus[a.phosporus.length - 1]]](s)[0].wide);
+        }
+
+        phosporus.push(a);
+      }
+
+      console.log(phosporus);
     });
 
   program.command('rna')
@@ -651,6 +776,5 @@ program.command('parse')
 
       console.log(result);
     });
-
 
 program.parse();

@@ -100,86 +100,6 @@ program.command('parse')
     
   });
 
-  program.command('acguitar')
-    .description('the sound of the acustic guitar in your ears')
-    .argument('<string>', 'string to get the sound of')
-    .action((s) => {
-      let result = [];
-      
-      parser.eagle(s).map((r) => {
-        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
-
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign
-        });
-      });
-
-      console.log(result);
-    });
-  
-  program.command('bass')
-    .description('the sound of bass in your ears')
-    .argument('<string>', 'string to get the sound of')
-    .action((s) => {
-      let result = [];
-      
-      parser.snowflake(s).map((r) => {
-        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
-
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign
-        });
-      });
-
-      console.log(result);
-    });
-  
-  program.command('basson')
-    .description('the sound of basson in your ears')
-    .argument('<string>', 'string to get the sound of')
-    .action((s) => {
-      let result = [];
-    
-      parser.gas_station(s).map((r) => {
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign: parser[parser_keys[r.wide]](r.word)[0].wide
-        });
-      });
-
-      console.log(result);
-    });
-
-  program.command('broadway')
-    .description('the broadway avenue')
-    .argument('<number>', 'number of the intersection street')
-    .argument('<string>', 'string to get into')
-    .action((n, s) => {
-      let result = [];
-    
-      parser.pepper_spray(s).map((r) => {
-        let last = r.wide;
-
-        for (let i = 0; i <= 14; i++) {
-          last = parser[parser_keys[last]](r.word)[0].wide;
-
-          if (i === 14) {
-            result.push({
-              word: r.word,
-              wide: last
-            });
-          }
-        }
-      });
-
-      console.log(result);
-    });
-
   program.command('carbon-dioxide')
     .argument('<string>', 'string to get the carbon dioxide from')
     .action((s) => {
@@ -194,46 +114,84 @@ program.command('parse')
       console.log(result);
     });
 
-  program.command('cello')
-    .description('the sound of cello in your ears')
-    .argument('<string>', 'string to get the sound of')
+  program.command('cocaine')
+    .argument('<string>', 'string to get the cocaine from')
     .action((s) => {
-      let result = [];
-      
-      parser.tent(s).map((r) => {
-        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
+      let h3cn = {
+        _carbon: 1,
+        _hydrogen: 3,
+        _nitrogen: 1,
+        carbon: parser.tent(s)[0].wide,
+        hydrogen: [parser.sunglasses(s)[0].wide],
+        nitrogen: parser.placard(s)[0].wide
+      };
 
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign
-        });
-      });
+      for (let i = 1; i <= 2; i++) {
+        h3cn.hydrogen.push(parser[parser_keys[h3cn.hydrogen[h3cn.hydrogen.length - 1]]](s)[0].wide);
+      }
 
-      console.log(result);
+      // o_1
+      let o_1 = {
+        _oxygen: 1,
+        oxygen: parser.trash_can(s)[0].wide
+      };
+
+      // o_2
+      let o_2 = {
+        _oxygen: 1,
+        oxygen: parser[parser_keys[o_1.oxygen]](s)[0].wide
+      };
+
+      // ch3
+      let ch3 = {
+        _carbon: 1,
+        _hydrogen: 3,
+        carbon: parser[parser_keys[h3cn.carbon]](s)[0].wide,
+        hydrogen: [h3cn.hydrogen[2]]
+      };
+
+      for (let i = 1; i <= 2; i++) {
+        ch3.hydrogen.push(parser[parser_keys[ch3.hydrogen[ch3.hydrogen.length - 1]]](s)[0].wide);
+      }
+
+      // o_3
+      let o_3 = {
+        _oxygen: 1,
+        oxygen: parser[parser_keys[o_2.oxygen]](s)[0].wide
+      };
+
+      // o_4
+      let o_4 = {
+        _oxygen: 1,
+        oxygen: parser[parser_keys[o_3.oxygen]](s)[0].wide
+      };
+
+      let benzeno = {
+        _carbon: 6,
+        _hydrogen: 6,
+        carbon: [h3cn.carbon],
+        hydrogen: [h3cn.hydrogen[2]]
+      }
+
+      for (let i = 1; i <= 5; i++) {
+        benzeno.carbon.push(parser[parser_keys[benzeno.carbon[benzeno.carbon.length - 1]]](s)[0].wide);
+      }
+
+      for (let i = 1; i <= 5; i++) {
+        benzeno.hydrogen.push(parser[parser_keys[benzeno.hydrogen[benzeno.hydrogen.length - 1]]](s)[0].wide);
+      }
+
+      console.log(h3cn);
+      console.log(o_1);
+      console.log(o_2);
+      console.log(ch3);
+      console.log(o_3);
+      console.log(o_4);
+      console.log(benzeno);
     });
 
-  program.command('clarinet')
-    .description('the sound of clarinet in your ears')
-    .argument('<string>', 'string to get the sound of')
-    .action((s) => {
-      let result = [];
-      
-      parser.tennis(s).map((r) => {
-        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
-
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign
-        });
-      });
-
-      console.log(result);
-    });
-
-  program.command('disel')
-    .argument('<string>', 'string to get the disel from')
+  program.command('diesel')
+    .argument('<string>', 'string to get the diesel from')
     .action((s) => {
       let left_ch_ch2_ch3 = null;
       let left_ch_ch2 = null;
@@ -316,6 +274,9 @@ program.command('parse')
         hydrogen: parser[parser_keys[left_hn.hydrogen]](s)[0].wide
       }
 
+      ////////////////////
+      // left ch group  //
+      ////////////////////
       hydrogen = [parser.sunglasses(s)[0].wide];
 
       for (let i = 1; i <= 2; i++) {
@@ -343,9 +304,9 @@ program.command('parse')
         _carbon: 1,
         _hydrogen: 3,
         carbon: parser[parser_keys[left_ch.carbon]](s)[0].wide,
-        hydrogen
+        hydrogen: [...hydrogen, parser[parser_keys[hydrogen[hydrogen.length - 1]]](s)[0].wide]
       };
-      
+
       /////////////////////
       // right structure //
       /////////////////////
@@ -363,6 +324,9 @@ program.command('parse')
         hydrogen: parser[parser_keys[right_hn.hydrogen]](s)[0].wide
       }
 
+      ////////////////////
+      // right ch group //
+      ////////////////////
       hydrogen = [parser.sunglasses(s)[0].wide];
 
       for (let i = 1; i <= 2; i++) {
@@ -390,7 +354,7 @@ program.command('parse')
         _carbon: 1,
         _hydrogen: 3,
         carbon: parser[parser_keys[right_ch.carbon]](s)[0].wide,
-        hydrogen
+        hydrogen: [...hydrogen, parser[parser_keys[hydrogen[hydrogen.length - 1]]](s)[0].wide]
       };
 
       console.log(left_ch_ch2_ch3);
@@ -509,25 +473,6 @@ program.command('parse')
       console.log(oxygen_hydrogen)
     });
 
-  program.command('flute')
-    .description('the sound of flute in your ears')
-    .argument('<string>', 'string to get the sound of')
-    .action((s) => {
-      let result = [];
-      
-      parser.watch(s).map((r) => {
-        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
-
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign
-        });
-      });
-
-      console.log(result);
-    });
-
   program.command('gasoline')
     .argument('<string>', 'string to get the gasoline formula of')
     .action((s) => {
@@ -546,17 +491,16 @@ program.command('parse')
         carbon: parser.tent(s)[0].wide,
         hydrogen: [hydrogen, parser[parser_keys[hydrogen]](s)[0].wide]
       }
-      // end of middle CH2
 
       // left Carbon
       left_carbon = {
         _carbon: 1,
         carbon: parser[parser_keys[middle_ch2.carbon]](s)[0].wide
       };
-      // end of left Carbon
+      
 
       // left CH3
-      hydrogen = parser[parser_keys[middle_ch2.hydrogen[0]]](s)[0].wide;
+      hydrogen = parser[parser_keys[hydrogen]](s)[0].wide;
       hydrogen_group = [];
 
       for (let i = 1; i <= 3; i++) {
@@ -651,42 +595,31 @@ program.command('parse')
       console.log(right_ch3);
     });
 
-  program.command('hat')
-    .description('the sound of a hat in your ears')
-    .argument('<string>', 'string to get the sound of')
+  program.command('glucose')
+    .argument('<string>', 'string to get the glucose from')
     .action((s) => {
-      let result = [];
-      
-      parser.tennis(s).map((r) => {
-        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
+      let glucose = {
+        _carbon: 6,
+        _hydrogen: 12,
+        _oxygen: 6,
+        carbon: [parser.tent(s)[0].wide],
+        hydrogen: [parser.sunglasses(s)[0].wide],
+        oxygen: [parser.trash_can(s)[0].wide]
+      };
 
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign
-        });
-      });
+      for (let i = 1; i <= 5; i++) {
+        glucose.carbon.push(parser[parser_keys[glucose.carbon[glucose.carbon.length - 1]]](s)[0].wide);
+      }
 
-      console.log(result);
-    });
+      for (let i = 1; i <= 11; i++) {
+        glucose.hydrogen.push(parser[parser_keys[glucose.hydrogen[glucose.hydrogen.length - 1]]](s)[0].wide);
+      }
 
-  program.command('kick')
-    .description('the sound of kick in your ears')
-    .argument('<string>', 'string to get the sound of')
-    .action((s) => {
-      let result = [];
-      
-      parser.sunflower(s).map((r) => {
-        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
+      for (let i = 1; i <= 5; i++) {
+        glucose.oxygen.push(parser[parser_keys[glucose.oxygen[glucose.oxygen.length - 1]]](s)[0].wide);
+      }
 
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign
-        });
-      });
-
-      console.log(result);
+      console.log(glucose);
     });
 
   program.command('ozone')
@@ -702,25 +635,6 @@ program.command('parse')
       }
 
       console.log(ozone);
-    });
-
-  program.command('piano')
-    .description('the sound of piano in your ears')
-    .argument('<string>', 'string to get the sound of')
-    .action((s) => {
-      let result = [];
-      
-      parser.pepper_spray(s).map((r) => {
-        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
-
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign
-        });
-      });
-
-      console.log(result);
     });
 
   program.command('red-phosporus')
@@ -803,85 +717,49 @@ program.command('parse')
       console.log(result);
     });
 
-  program.command('snare')
-    .description('the sound of snare in your ears')
-    .argument('<string>', 'string to get the sound of')
+  program.command('sugar')
+    .argument('<string>', 'string to get the sugar from')
     .action((s) => {
-      let result = [];
-      
-      parser.fire_extinguisher(s).map((r) => {
-        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
+      let sugar = {
+        _carbon: 12,
+        _hydrogen: 22,
+        _oxygen: 11,
+        carbon: [parser.tent(s)[0].wide],
+        hydrogen: [parser.sunglasses(s)[0].wide],
+        oxygen: [parser.trash_can(s)[0].wide]
+      };
 
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign
-        });
-      });
+      for (let i = 1; i <= 11; i++) {
+        sugar.carbon.push(parser[parser_keys[sugar.carbon[sugar.carbon.length - 1]]](s)[0].wide);
+      }
 
-      console.log(result);
+      for (let i = 1; i <= 21; i++) {
+        sugar.hydrogen.push(parser[parser_keys[sugar.hydrogen[sugar.hydrogen.length - 1]]](s)[0].wide);
+      }
+
+      for (let i = 1; i <= 10; i++) {
+        sugar.oxygen.push(parser[parser_keys[sugar.oxygen[sugar.oxygen.length - 1]]](s)[0].wide);
+      }
+
+      console.log(sugar);
     });
 
-  program.command('tambourine')
-    .description('the sound of tambourine in your ears')
-    .argument('<string>', 'string to get the sound of')
+
+  program.command('water')
+    .argument('<string>', 'string to get the water from')
     .action((s) => {
-      let result = [];
-      
-      parser.camping(s).map((r) => {
-        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
+      let water = {
+        _hydrogen: 2,
+        _oxygen: 1,
+        hydrogen: [parser.sunglasses(s)[0].wide],
+        oxygen: [parser.trash_can(s)[0].wide]
+      };
 
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign
-        });
-      });
+      for (let i = 1; i <= 1; i++) {
+        water.hydrogen.push(parser[parser_keys[water.hydrogen[water.hydrogen.length - 1]]](s)[0].wide);
+      }
 
-      console.log(result);
-    });
-
-  program.command('union-square')
-    .description('the union-square park streets')
-    .argument('<string>', 'string to get into the union-square park')
-    .action((s) => {
-      let result = [];
-    
-      parser.pepper_spray(s).map((r) => {
-        let last = r.wide;
-
-        for (let i = 0; i <= 17; i++) {
-          last = parser[parser_keys[last]](r.word)[0].wide;
-
-          if (i >= 14) {
-            result.push({
-              word: r.word,
-              wide: last
-            });
-          }
-        }
-      });
-
-      console.log(result);
-    });
-
-  program.command('violin')
-    .description('the sound of violin in your ears')
-    .argument('<string>', 'string to get the sound of')
-    .action((s) => {
-      let result = [];
-      
-      parser.taxi_cab(s).map((r) => {
-        let foreign = parser[parser_keys[r.wide]](r.word)[0].wide;
-
-        result.push({
-          word: r.word,
-          wide: r.wide,
-          foreign
-        });
-      });
-
-      console.log(result);
+      console.log(water);
     });
 
 program.parse();

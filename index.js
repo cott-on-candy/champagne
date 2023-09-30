@@ -100,6 +100,33 @@ program.command('parse')
     
   });
 
+  program.command('alumina')
+    .argument('<string>', 'string to get the alumina from')
+    .action((s) => {
+      let oxygen = {
+        _oxygen: 1,
+        oxygen: parser.trash_can(s)[0].wide
+      };
+
+      let alluminium = {
+        _alluminium: 1,
+        alluminium: parser.tennis(s)[0].wide
+      };
+
+      let corner_oxygenn = {
+        _oxygen: 1,
+        oxygen: parser[parser_keys[alluminium.alluminium]](s)[0].wide
+      };
+
+      console.log([
+        corner_oxygenn,
+        alluminium,
+        oxygen,
+        alluminium,
+        corner_oxygenn
+      ]);
+    });
+  
   program.command('carbon-dioxide')
     .argument('<string>', 'string to get the carbon dioxide from')
     .action((s) => {

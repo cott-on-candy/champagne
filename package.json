@@ -27,13 +27,13 @@
     "snowflake": "git+ssh://git@github.com:cangjie-champagne/snowflake#master",
     "sunflower": "git+ssh://git@github.com:cangjie-champagne/sunflower#master",
     "sunglasses": "git+ssh://git@github.com:cangjie-champagne/sunglasses#master",
-    "taxi-cab": "git+ssh://git@github.com:cangjie-champagne/taxi-cab",
-    "telephone": "git+ssh://git@github.com:cangjie-champagne/telephone",
-    "tennis": "git+ssh://git@github.com:cangjie-champagne/tennis",
-    "tent": "git+ssh://git@github.com:cangjie-champagne/tent",
-    "trash-can": "git+ssh://git@github.com:cangjie-champagne/trash-can",
-    "toolbox": "git+ssh://git@github.com:cangjie-champagne/toolbox",
-    "umbrella": "git+ssh://git@github.com:cangjie-champagne/umbrella",
-    "watch": "git+ssh://git@github.com:cangjie-champagne/watch"
+    "taxi-cab": "git+ssh://git@github.com:cangjie-champagne/taxi-cab#master",
+    "telephone": "git+ssh://git@github.com:cangjie-champagne/telephone#master",
+    "tennis": "git+ssh://git@github.com:cangjie-champagne/tennis#master",
+    "tent": "git+ssh://git@github.com:cangjie-champagne/tent#master",
+    "trash-can": "git+ssh://git@github.com:cangjie-champagne/trash-can#master",
+    "toolbox": "git+ssh://git@github.com:cangjie-champagne/toolbox#master",
+    "umbrella": "git+ssh://git@github.com:cangjie-champagne/umbrella#master",
+    "watch": "git+ssh://git@github.com:cangjie-champagne/watch#master"
   }
 }

@@ -126,6 +126,51 @@ program.command('parse')
         corner_oxygenn
       ]);
     });
+
+  program.command('calcium-oxide')
+    .argument('<string>', 'string to get the calcium-oxide from')
+    .action((s) => {
+      let calcium = {
+        _calcium: 1,
+        calcium: parser.umbrella(s)[0].wide
+      };
+
+      let oxygen = {
+        _oxygen: 1,
+        oxygen: parser[parser_keys[calcium.calcium]](s)[0].wide
+      };
+
+      console.log([
+        calcium,
+        oxygen
+      ]);
+    });
+
+  program.command('calcium-sulfate')
+    .argument('<string>', 'string to get the calcium sulfate from')
+    .action((s) => {
+      let calcium = {
+        _calcium: 1,
+        calcium: parser.umbrella(s)[0].wide
+      };
+
+      let sulfur = {
+        _sulfur: 1,
+        sulfur: parser.pepper_spray(s)[0].wide
+      };
+
+      let oxygen = parser[parser_keys[sulfur.sulfur]](s)[0].wide;
+      oxygen = {
+        _oxygen: 4,
+        oxygen: [oxygen, oxygen, oxygen, oxygen]
+      };
+
+      console.log({
+        calcium,
+        sulfur,
+        oxygen
+      });
+    });
   
   program.command('carbon-dioxide')
     .argument('<string>', 'string to get the carbon dioxide from')
@@ -249,12 +294,19 @@ program.command('parse')
       middle_carbon_left = { _carbon: 1, carbon: parser.tent(s)[0].wide }; 
       middle_carbon_right = { _carbon: 1, carbon: parser.tent(s)[0].wide };
 
+      console.log(middle_carbon_left.carbon);
+      console.log(parser_keys[middle_carbon_left.carbon]);
+      console.log(parser[parser_keys[middle_carbon_left.carbon]](s));
+
       middle_carbon_hc_left = { 
         _hydrogen: 1,
         _carbon: 1,
         hydrogen: parser.sunglasses(s)[0].wide,
         carbon: parser[parser_keys[middle_carbon_left.carbon]](s)[0].wide
       };
+
+      console.log(middle_carbon_hc_left);
+      console.log(parser_keys[middle_carbon_hc_left.carbon]);
 
       middle_carbon_ch_left = { 
         _carbon: 1,
@@ -500,6 +552,28 @@ program.command('parse')
       console.log(oxygen_hydrogen)
     });
 
+  program.command('iron-oxide')
+    .argument('<string>', 'string to get the iron-oxide from')
+    .action((s) => {
+      let iron = {
+        _iron: 1,
+        iron: parser.magnet(s)[0].wide
+      };
+
+      let oxygen = {
+        _oxygen: 1,
+        oxygen: parser[parser_keys[iron.iron]](s)[0].wide
+      };
+
+      console.log([
+        oxygen,
+        iron,
+        oxygen,
+        iron,
+        oxygen
+      ]);
+    });
+
   program.command('gasoline')
     .argument('<string>', 'string to get the gasoline formula of')
     .action((s) => {
@@ -649,6 +723,50 @@ program.command('parse')
       console.log(glucose);
     });
 
+  program.command('lithium-hydroxide')
+    .argument('<string>', 'string to get the lithium hydroxide from')
+    .action((s) => {
+      let oxygen = {
+        _oxygen: 1,
+        oxygen: parser.trash_can(s)[0].wide
+      };
+
+      let lithium = {
+        _lithium: 1,
+        lithium: parser[parser_keys[oxygen.oxygen]](s)[0].wide
+      };
+
+      let hydrogen = {
+        _hydrogen: 1,
+        hydrogen: parser[parser_keys[oxygen.oxygen]](s)[0].wide
+      };
+
+      console.log([
+        lithium,
+        oxygen,
+        hydrogen
+      ]);
+    });
+
+  program.command('magnesia')
+    .argument('<string>', 'string to get the magnesia from')
+    .action((s) => {
+      let magnesium = {
+        _magnesium: 1,
+        magnesium: parser.flashlight(s)[0].wide 
+      };
+
+      let oxygen = {
+        _oxygen: 1,
+        oxygen: parser.trash_can(s)[0].wide
+      };
+
+      console.log({
+        magnesium,
+        oxygen
+      });
+    });
+
   program.command('ozone')
     .argument('<string>', 'string to get the ozone from')
     .action((s) => {
@@ -744,6 +862,26 @@ program.command('parse')
       console.log(result);
     });
 
+  program.command('silica')
+    .argument('<string>', 'string to get the silica from')
+    .action((s) => {
+      let silicon = {
+        _silicon: 1,
+        silicon: parser.guitar(s)[0].wide
+      };
+
+      let oxygen = {
+        _oxygen: 1,
+        oxygen: parser[parser_keys[silicon.silicon]](s)[0].wide
+      };
+
+      console.log([
+        oxygen,
+        silicon,
+        oxygen
+      ]);
+    });
+
   program.command('sugar')
     .argument('<string>', 'string to get the sugar from')
     .action((s) => {
@@ -769,6 +907,27 @@ program.command('parse')
       }
 
       console.log(sugar);
+    });
+
+  program.command('sulfur-trioxide')
+    .argument('<string>', 'string to get the sulfur trioxide from')
+    .action((s) => {
+      let sulfur = {
+        _sulfur: 1,
+        sulfur: parser.pepper_spray(s)[0].wide
+      };
+
+      let oxygen = {
+        _oxygen: 1,
+        oxygen: parser[parser_keys[sulfur.sulfur]](s)[0].wide
+      };
+
+      console.log([
+        sulfur,
+        oxygen,
+        oxygen,
+        oxygen
+      ]);
     });
 
 

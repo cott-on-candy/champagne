@@ -139,7 +139,7 @@ commander@^11.0.0:
     commander "^11.0.0"
     telephone-booth "git+ssh://git@github.com:cangjie-champagne/telephone-booth#master"
 
-"taxi-cab@git+ssh://git@github.com:cangjie-champagne/taxi-cab":
+"taxi-cab@git+ssh://git@github.com:cangjie-champagne/taxi-cab#master":
   version "1.0.0"
   resolved "git+ssh://git@github.com/cangjie-champagne/taxi-cab.git"
   integrity sha512-PBXsugEQ1GKtlH3FTMEh6mpix815vjTinW0e3UMZ44Zrmy+n9zjN1kwbMw4kvgKrc8ZF5XvtlEDRRMi0XJ2HHA==
@@ -152,7 +152,7 @@ commander@^11.0.0:
   resolved "git+ssh://git@github.com/cangjie-champagne/telephone-booth.git"
   integrity sha512-YuH4Cs73HYgSt2/g4ZQynZBnqnCo0gG7Bz0wnfvItXttcQ0vlHyPmNYbva7AMMDMkbFzxX8mqmmKZjCpYJd7Rg==
 
-"telephone@git+ssh://git@github.com:cangjie-champagne/telephone":
+"telephone@git+ssh://git@github.com:cangjie-champagne/telephone#master":
   version "1.0.0"
   resolved "git+ssh://git@github.com/cangjie-champagne/telephone.git"
   integrity sha512-1o/n/MFsFfTYKo0o5JW7d5xe0sm9+HMeANIP0MD7x1HR4hp6CUa/48f61wZlyCAN9kGPfv2ZU3Lkc56ZQgU28w==
@@ -160,7 +160,7 @@ commander@^11.0.0:
     commander "^11.0.0"
     telephone-booth "git+ssh://git@github.com:cangjie-champagne/telephone-booth#master"
 
-"tennis@git+ssh://git@github.com:cangjie-champagne/tennis":
+"tennis@git+ssh://git@github.com:cangjie-champagne/tennis#master":
   version "1.0.0"
   resolved "git+ssh://git@github.com/cangjie-champagne/tennis.git"
   integrity sha512-Lizo0865Dpq+0eQwP/M1kCtaoSAqJfFnhkuAyxONl82CQJia2wdBysmx4zjoaUlRcqF8cVEnC9Leiha5BywRbQ==
@@ -168,7 +168,7 @@ commander@^11.0.0:
     commander "^11.0.0"
     telephone-booth "git+ssh://git@github.com:cangjie-champagne/telephone-booth#master"
 
-"tent@git+ssh://git@github.com:cangjie-champagne/tent":
+"tent@git+ssh://git@github.com:cangjie-champagne/tent#master":
   version "1.0.0"
   resolved "git+ssh://git@github.com/cangjie-champagne/tent.git"
   integrity sha512-4O6L6mReWghx6awsPNoNFh60aLdo5V4oHXTo7uNrwgXzfEyY//dreKxkUn4C1bGsY9xQCYEUawOmcNZXL/SxWA==
@@ -176,14 +176,14 @@ commander@^11.0.0:
     commander "^11.0.0"
     telephone-booth "git+ssh://git@github.com:cangjie-champagne/telephone-booth#master"
 
-"toolbox@git+ssh://git@github.com:cangjie-champagne/toolbox":
+"toolbox@git+ssh://git@github.com:cangjie-champagne/toolbox#master":
   version "1.0.0"
   resolved "git+ssh://git@github.com/cangjie-champagne/toolbox.git#1e7e9fe2fab7ede99f77c4492c067043bb3d4110"
   dependencies:
     commander "^11.0.0"
     telephone-booth "git+ssh://git@github.com:cangjie-champagne/telephone-booth#master"
 
-"trash-can@git+ssh://git@github.com:cangjie-champagne/trash-can":
+"trash-can@git+ssh://git@github.com:cangjie-champagne/trash-can#master":
   version "1.0.0"
   resolved "git+ssh://git@github.com/cangjie-champagne/trash-can.git"
   integrity sha512-t/kgsx2yz7JFy1D/Op0YCXxb5dWUjzyyB4Loagzd/Bi6UE9YVVMFM4rip2iEIk/AyyKn8xz8/VxGkLvcW98Yyw==
@@ -191,7 +191,7 @@ commander@^11.0.0:
     commander "^11.0.0"
     telephone-booth "git+ssh://git@github.com:cangjie-champagne/telephone-booth#master"
 
-"umbrella@git+ssh://git@github.com:cangjie-champagne/umbrella":
+"umbrella@git+ssh://git@github.com:cangjie-champagne/umbrella#master":
   version "1.0.0"
   resolved "git+ssh://git@github.com/cangjie-champagne/umbrella.git"
   integrity sha512-qVPuWnYju6tmxsA2RiB2bvOGTmwWhR5SF3PYMkBmU1I15fOQ83DVtaPuvwCYUgaeg5b3SIY6XOA5ppXgeTt4fg==
@@ -199,7 +199,7 @@ commander@^11.0.0:
     commander "^11.0.0"
     telephone-booth "git+ssh://git@github.com:cangjie-champagne/telephone-booth#master"
 
-"watch@git+ssh://git@github.com:cangjie-champagne/watch":
+"watch@git+ssh://git@github.com:cangjie-champagne/watch#master":
   version "1.0.0"
   resolved "git+ssh://git@github.com/cangjie-champagne/watch.git"
   integrity sha512-MPFWrJo1OnKf/DjTcCTEHgMNSA0IGylwUraulqDklZQ2oSsBONaDDoyjGrYiLFxNE25Au0NOTBVXrBwCafXshg==

@@ -294,19 +294,12 @@ program.command('parse')
       middle_carbon_left = { _carbon: 1, carbon: parser.tent(s)[0].wide }; 
       middle_carbon_right = { _carbon: 1, carbon: parser.tent(s)[0].wide };
 
-      console.log(middle_carbon_left.carbon);
-      console.log(parser_keys[middle_carbon_left.carbon]);
-      console.log(parser[parser_keys[middle_carbon_left.carbon]](s));
-
       middle_carbon_hc_left = { 
         _hydrogen: 1,
         _carbon: 1,
         hydrogen: parser.sunglasses(s)[0].wide,
         carbon: parser[parser_keys[middle_carbon_left.carbon]](s)[0].wide
       };
-
-      console.log(middle_carbon_hc_left);
-      console.log(parser_keys[middle_carbon_hc_left.carbon]);
 
       middle_carbon_ch_left = { 
         _carbon: 1,
@@ -879,6 +872,44 @@ program.command('parse')
         oxygen,
         silicon,
         oxygen
+      ]);
+    });
+
+  program.command('sucrose')
+    .argument('<string>', 'string to get the sucrose from')
+    .action((s) => {
+      let oxygen = {
+        _oxygen: 1,
+        oxygen: parser.trash_can(s)[0].wide
+      };
+
+      let left_oxygen = {
+        _oxygen: 1,
+        oxygen: parser[parser_keys[oxygen.oxygen]](s)[0].wide
+      };
+
+      let hydrogen = parser.sunglasses(s)[0].wide;
+
+      let left_ch2_oh = [
+        {
+          _carbon: 1,
+          _hydrogen: 2,
+          carbon: parser.tent(s)[0].wide,
+          hydrogen: [hydrogen, parser[parser_keys[hydrogen]](s)[0].wide]
+        },
+        {
+          _oxygen: 1,
+          _hydrogen: 1,
+          oxygen: parser[parser_keys[left_oxygen.oxygen]](s)[0].wide,
+          hydrogen: parser[parser_keys[hydrogen]](s)[0].wide
+        }
+      ];
+
+      console.log([
+        left_ch2_oh[0],
+        left_ch2_oh[1],
+        left_oxygen,
+        oxygen,
       ]);
     });
 
